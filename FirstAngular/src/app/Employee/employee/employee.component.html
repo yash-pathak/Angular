@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </nav>
+<h1  class="bg-info text-white">Details</h1>
+<ol>
+    <li *ngFor="let obj of cityList">
+            
+                    {{obj.city}} 
+               
+        <ul>
+            <li *ngFor="let empObj of obj.Employee">
+                {{empObj.employeeId}}  {{empObj.employeeName}}
+            </li>
+        </ul>
+    </li>
+</ol>
+<div>
+    <label>User Name</label>
+<input type = "text" [(ngModel)]="username">
+<br/>
+<p>welcome: {{username|ulta}}</p>
+</div>
+
+<div> 
+ <button type="submit" [disabled]="username===''"  (click)="username=''">reset</button> -->
+ <button type="submit" [disabled]="isDisabled()"  (click)="setUserNameToBlank()">reset</button>
+</div>
+
+<br/>
+
+<div>
+<button type="button" class="btn btn-success" (click)="changeValue(isValid)">Display Details</button>
+<p *ngIf="isValid">hakuna matata </p>
+</div>
+
+<div *ngFor="let a of arr" [ngStyle]="{'background':a>5?'green':''}" [ngClass]="a>5? ['para']:''" > 
+   
+    {{a}}
+</div> 
+
+<div class="container">
+        List to be filtered on : 
+        <input type="text" [(ngModel)]="filterCriteria"/>
+       <h1>Employees List</h1>
+        <table  class="table table-dark">
+          <tr>
+            <th>Employee Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+            <th>Date of joining</th>
+            <th>Appraisal</th>
+            <th>Description</th>
+          </tr>
+          <tr class="table-danger"  *ngFor="let  employeeObj of employeeArr|filterx:filterCriteria">
+            <td>{{employeeObj.employeeName|gender:employeeObj.gender:'male'}}</td>
+            <td>{{employeeObj.gender}}</td>
+            <td>{{employeeObj.employeeSalary|currency:'INR'}}</td>
+            <td>{{employeeObj.employeeDOJ|date:"fullDate"|uppercase}}</td>
+            <td>{{employeeObj.employeeAppraisal|percent:'4.3-5'}}</td>
+            <td>{{employeeObj.employeeDesc|slice:2:15}}</td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div>
+        <label >Normal power:-</label>
+        <input type="number" [(ngModel)]="firstnumber">
+
+        <label>Boost Factor:-</label>
+        <input type="number" [(ngModel)]="secondnumber">
+
+        <h4>super hero power:-</h4> 
+        {{firstnumber|multiply:secondnumber}}
+      </div>
+  

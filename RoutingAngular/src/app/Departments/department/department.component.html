@@ -1,0 +1,17 @@
+<p>department works!</p>
+<div class="container">
+
+   <h1>Department List</h1>
+    <table  class="table table-dark">
+      <tr>
+        <th>Department Name</th>
+        <th>Department Head</th>
+        <th>Department ID</th>
+      </tr>
+      <tr (click)=onSelect(departmentObj) *ngFor="let  departmentObj of departmentArr">
+        <td>{{departmentObj.departmentName}}</td>
+        <td>{{departmentObj.departmentHead}}</td>
+        <td>{{departmentObj.departmentId}}</td>
+      </tr>
+    </table>
+  </div>
